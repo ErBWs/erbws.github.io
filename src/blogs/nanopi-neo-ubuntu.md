@@ -308,18 +308,29 @@ sudo make modules_install
 ## 题外话(配置Clion用于Linux驱动开发)
 
 这篇文章起因是Clion无法找到`file_operations`结构体，但这样移植之后还是找不到。配置Clion远程开发的教程很多，比如[这篇](https://zhuanlan.zhihu.com/p/661990065)，这里不做赘述，仅提出我这个问题的解决办法：
+
 1. 在`CMakeLists.txt`中加入这样一段
+
 ```c
 include_directories("/usr/src/linux-6.8.7/include/")
 ```
+
 2. `File -> Reload CMake Project`
+
 3. `Tool -> Resync with Remote Hosts`
----
+
 [^1]: [ubuntu制作SD启动卡](https://blog.csdn.net/li171049/article/details/126636040?spm=1001.2014.3001.5506)
+
 [^2]: [全志H3 | 移植主线最新uboot 2023.04和kernel 6.1.11到Nanopi NEO开发板](https://cloud.tencent.com/developer/article/2314079?pos=comment)
+
 [^3]: [usbwifi网卡mt7601u驱动配置](https://www.jianshu.com/p/f3838626a0c8)
+
 [^4]: [Uboot命令](https://www.cnblogs.com/zhaipanger/p/12985606.html)
+
 [^5]: [Ubuntu rootfs customization](https://wiki.t-firefly.com/en/Firefly-Linux-Guide/custom_ubuntu_rootfs.html)
+
 [^6]: [Ethernet device not managed](https://askubuntu.com/questions/882806/ethernet-device-not-managed)
+
 [^7]: [解决ubuntu系统中文乱码问题](https://blog.csdn.net/qq_31375855/article/details/108118957)
+
 [^8]: [【Linux内核树】五步构建](https://blog.csdn.net/weixin_39591031/article/details/121710076?spm=1001.2014.3001.5506)

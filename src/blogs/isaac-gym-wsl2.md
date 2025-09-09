@@ -385,8 +385,6 @@ Isaac Gym 毕竟已经 deprecate 了，配置起来总是有各种问题
 
 所以上面才会说跑不起来也没事，继续往下看
 
----
-
 [^1]: [microsoft/WSL#10753 (comment)](https://github.com/microsoft/WSL/issues/10753#issuecomment-1814839310)
 
 [^2]: [Installing openssh-server in Ubuntu-24.04 on WSL2](https://askubuntu.com/questions/1512180/installing-openssh-server-in-ubuntu-24-04-on-wsl2)
