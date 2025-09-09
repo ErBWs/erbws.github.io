@@ -1,5 +1,6 @@
 import { defineConfig } from 'vitepress'
 import { blogSidebar } from '../src/sidebar'
+import footnote_plugin = require("markdown-it-footnote")
 
 export default defineConfig({
   srcDir: "./src",
@@ -10,6 +11,9 @@ export default defineConfig({
     image: {
       lazyLoading: true,
     },
+    config: (md) => {
+      md.use(footnote_plugin)
+    }
   },
 
   lastUpdated: true,

@@ -395,4 +395,4 @@ Isaac Gym 毕竟已经 deprecate 了，配置起来总是有各种问题
 
 [^4]: [【记录】在WSL2中部署Vulkan开发环境（2022年版）](https://zhuanlan.zhihu.com/p/576320322)
 
-[^5]: [「已解决」anaconda环境version `GLIBCXX_3.4.30‘ not found](https://blog.csdn.net/CCCDeric/article/details/129292944)
+[^5]: [「已解决」anaconda环境version GLIBCXX_3.4.30 not found](https://blog.csdn.net/CCCDeric/article/details/129292944)
