@@ -5,6 +5,9 @@ layout: home
 hero:
   name: ErBW_s
   tagline: Live and Learn
+  image:
+    src: /logo.png
+    alt: ErBW_s
   actions:
     - theme: brand
       text: 博客

@@ -4,6 +4,7 @@ import { blogSidebar } from '../src/sidebar'
 export default defineConfig({
   srcDir: "./src",
   title: "ErBW_s",
+  head: [["link", { rel: "icon", href: "/favicon.ico" }]],
 
   markdown: {
     image: {
@@ -11,7 +12,11 @@ export default defineConfig({
     },
   },
 
+  lastUpdated: true,
+
   themeConfig: {
+    logo: '/logo.png',
+
     nav: [
       { text: '主页', link: '/' },
       { text: '博客', link: '/blogs' }
