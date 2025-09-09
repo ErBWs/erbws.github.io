@@ -1,0 +1,50 @@
+import { defineConfig } from 'vitepress'
+import { blogSidebar } from '../src/sidebar'
+
+export default defineConfig({
+  srcDir: "./src",
+  title: "ErBW_s",
+
+  markdown: {
+    image: {
+      lazyLoading: true,
+    },
+  },
+
+  themeConfig: {
+    nav: [
+      { text: '主页', link: '/' },
+      { text: '博客', link: '/blogs' }
+    ],
+
+    sidebar: {
+      '/blogs/': blogSidebar()
+    },
+
+    outline: {
+      label: '页面导航'
+    },
+
+    docFooter: {
+      prev: '上一篇',
+      next: '下一篇'
+    },
+
+    search: {
+      provider: "local",
+    },
+
+    notFound: {
+      quote: '吔？页面不见了',
+      linkText: '回首页'
+    },
+
+    lastUpdated: {
+      text: "最新更新于",
+    },
+
+    socialLinks: [
+      { icon: 'github', link: 'https://github.com/ErBWs' }
+    ]
+  }
+})
