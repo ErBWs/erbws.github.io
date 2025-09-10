@@ -19,7 +19,7 @@
 ```
 :::
 
-## CLion设置
+## CLion 设置
 
 1. 如图找到Clion设置中的`Make`
 
@@ -51,7 +51,7 @@
 
 ![](assets/ch32-with-clion/make-all.png)
 
-::: tip Tip ✨
+::: tip 
 `make clean` 可以用于清理所有编译的文件，运行一次 `make clean` 再运行 `make all` 可达到重新编译的效果
 :::
 
@@ -73,7 +73,7 @@
 
 6. 然后就可以通过 Clion 进行编译、下载和调试了！
 
-::: tip Tip ✨
+::: tip 
 想要新增文件只需要在加入新文件后，
 用 MounRiver Studio 打开这个工程重新进行一次成功的编译即可获得更新后的 `makefile` 和 `subdir.mk` 文件，
 便可以继续用 Clion 进行代码编写烧录了。

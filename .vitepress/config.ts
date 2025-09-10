@@ -1,5 +1,5 @@
 import { defineConfig } from 'vitepress'
-import { blogSidebar } from '../src/sidebar'
+import { blogSidebar } from '../src/blogs/sidebar'
 import footnote_plugin = require("markdown-it-footnote")
 
 export default defineConfig({
