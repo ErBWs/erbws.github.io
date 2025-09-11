@@ -1,6 +1,9 @@
 import { defineConfig } from 'vitepress'
 import { blogSidebar } from '../src/blogs/sidebar'
-import footnote_plugin = require("markdown-it-footnote")
+import { groupIconMdPlugin, groupIconVitePlugin } from 'vitepress-plugin-group-icons'
+
+// https://blog.csdn.net/ashtyukjhf/article/details/129657613
+import footnote_plugin from 'markdown-it-footnote'
 
 export default defineConfig({
   srcDir: "./src",
@@ -8,12 +11,25 @@ export default defineConfig({
   head: [["link", { rel: "icon", href: "/favicon.ico" }]],
 
   markdown: {
+    lineNumbers: true,
     image: {
       lazyLoading: true,
     },
     config: (md) => {
       md.use(footnote_plugin)
+      md.use(groupIconMdPlugin)
     }
+  },
+
+  vite: {
+    plugins: [
+      groupIconVitePlugin({
+        customIcon: {
+          'windows': 'logos:microsoft-windows-icon',
+          'macos': 'logos:apple-app-store'
+        }
+      })
+    ],
   },
 
   lastUpdated: true,
@@ -48,8 +64,10 @@ export default defineConfig({
       linkText: '回首页'
     },
 
+    darkModeSwitchLabel: '主题',
+
     lastUpdated: {
-      text: "最新更新于",
+      text: "上次更新",
     },
 
     socialLinks: [

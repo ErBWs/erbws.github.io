@@ -21,7 +21,7 @@
 
 ## CLion 设置
 
-1. 如图找到Clion设置中的`Make`
+1. 如图找到 Clion 设置中的 `Make`
 
 ![](assets/ch32-with-clion/make.png)
 

@@ -4,9 +4,9 @@
 
 这是一个单纯的记录性文档，用来记录我如何从头开始配置 macOS 上我需要的开发环境
 
-> **Q: 为什么不用 nix-darwin?**
+> [!TIP] 为什么不用 nix-darwin?
 >
-> A: 这东西太复杂了，为了安装某个工具链还需要搜索配置一大堆内容，make life simple
+> 这东西太复杂了，为了安装某个工具链还需要搜索配置一大堆内容，make life simple
 
 下面正式开始
 
@@ -28,16 +28,29 @@ export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_pr
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
 
-修改生成的 `～/.zshrc` 
+修改生成的 `～/.zshrc`
 
 1. 终端主题 `ZSH_THEME="af-magic"`
 2. 添加 proxy
+
+## Homebrew
+
+```shell
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# ~/.zshrc
+export PATH=/opt/homebrew/bin:$PATH
+```
 
 ## Ghostty
 
 ### 安装
 
-从[官网](https://ghostty.org/download)下载 .dmg 文件并安装，添加自定义配置
+```shell
+brew install --cask ghostty
+```
+
+### 添加自定义配置
 
 ```ini
 # window
@@ -59,26 +72,34 @@ font-thicken = true
 1. 找到一个默认打开方式为 `终端` 的文件
 2. 右键显示简介，将打开方式修改为 Ghostty，并全局应用
 
-## Homebrew
+## 字体
+
+通过 Homebrew 安装常用字体
 
 ```shell
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
-# ~/.zshrc
-export PATH=/opt/homebrew/bin:$PATH
+# 思源黑体
+brew install --cask font-source-han-sans-vf
+# 思源宋体
+brew install --cask font-source-han-serif-vf
+# 霞鹜文楷 GB
+brew install --cask font-lxgw-wenkai-gb
+# JetBrains Mono
+brew install --cask font-jetbrains-mono
+# 得意黑
+brew install --cask font-smiley-sans
 ```
 
 ## Git
 
 macOS 自带 git，但需要 PAT (Personal Access Token) 才能克隆私有仓库或推送
 
-标准做法：使用 GCM (Git Credential Manager)
+- 标准做法：使用 GCM (Git Credential Manager)
 
 ```shell
 brew install --cask git-credential-manager
 ```
 
-懒人做法：从[官网](https://github.com/apps/desktop)下载 Github Desktop 并用网页登录，会自动 git config
+- 懒人做法：从[官网](https://github.com/apps/desktop)下载 Github Desktop 并用网页登录，会自动 git config
 
 ## Flutter
 
@@ -86,7 +107,8 @@ Flutter 分为原始仓库 [flutter / flutter](https://github.com/flutter/flutte
 
 ### flutter 安装
 
-可以考虑直接从 [Archive](https://docs.flutter.dev/release/archive) 下载 zip 或者 git clone。我的本地环境从 GitHub clone 下载速度更快
+可以考虑直接从 [Archive](https://docs.flutter.dev/release/archive) 下载 zip，使用 Homebrew 或者 git clone。
+但我喜欢手动管理位置，因此选择使用 git clone
 
 ```shell
 git clone -b stable https://github.com/flutter/flutter.git
@@ -116,15 +138,18 @@ cd ~/dev/toolchains/flutter_ohos
 git pull origin
 ```
 
-> **Q: 为什么不用 fvm?**
+> [!TIP] 为什么不用 fvm?
 >
-> A: 我找不到用 fvm 的理由，IDEA 可以自己管理 flutter 依赖
+> 我找不到用 fvm 的理由，IDEA 可以自己管理 flutter 依赖
 
 ## JDK
 
-从 [Eclipse Temurin](https://adoptium.net/zh-CN/temurin/releases/) 官网下载对应版本和架构的 `.pkg` 文件进行安装。通过修改 `JAVA_HOME` 路径来切换 java 版本
+根据 [Eclipse Temurin](https://adoptium.net/zh-CN/temurin/releases/) 官网使用 Homebrew 进行安装。通过修改 `JAVA_HOME` 路径来切换 java 版本
 
 ```shell
+brew install --cask temurin@21
+brew install --cask temurin@17
+
 # ~/.zshrc
 export TEMURIN_17=/Library/Java/JavaVirtualMachines/temurin-17.jdk/Contents/Home
 export TEMURIN_21=/Library/Java/JavaVirtualMachines/temurin-21.jdk/Contents/Home
@@ -134,29 +159,9 @@ export JAVA_HOME=$TEMURIN_17
 - HarmonyOS SDK - JDK17
 - Android - JDK17
 
-## macOS/iOS
-
-### Xcode
-
-从 App Store 下载 Xcode
-
-```shell
-sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer
-sudo xcodebuild -runFirstLaunch
-sudo xcodebuild -license
-```
-
-### CocoaPods
-
-一定不要用[官网](https://cocoapods.org/)提供的 sudo gem install cocoapods
-
-```shell
-brew install cocoapods
-```
-
 ## Node.js
 
-通过[官方网站](https://nodejs.org/en/download/)的命令进行安装，以 Node.js v22.19.0 (LTS) 和 nvm v0.40.3 为例
+根据[官网](https://nodejs.org/en/download/)的命令进行安装，以 Node.js v22.19.0 (LTS) 和 nvm v0.40.3 为例
 
 ```shell
 # Download and install nvm:
@@ -174,6 +179,28 @@ corepack enable pnpm
 
 # Verify pnpm version:
 pnpm -v
+```
+
+## macOS/iOS
+
+### Xcode
+
+从 App Store 下载 Xcode
+
+```shell
+sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer
+sudo xcodebuild -runFirstLaunch
+sudo xcodebuild -license
+```
+
+### CocoaPods
+
+> [!CAUTION]
+> 
+> 一定不要用[官网](https://cocoapods.org/)提供的 sudo gem install cocoapods
+
+```shell
+brew install cocoapods
 ```
 
 ## HarmonyOS SDK

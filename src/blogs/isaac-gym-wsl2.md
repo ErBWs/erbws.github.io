@@ -2,14 +2,12 @@
 
 ## 前言
 
-微软开发并开源了 WSL (Windows Subsystem for Linux)，相比安装双系统，WSL2 的使用更加灵活。因此在需要配置 Isaac Gym 环境时我优先考虑了是否可以使用 WSL 进行仿真运行。幸运的是在谷歌了一番后成功找到这样一篇[成功案例](https://ljoson.github.io/views/AI/RL/env.html)，于是便开始了我的折腾之路
+微软开发并开源了 WSL (Windows Subsystem for Linux)，相比安装双系统，WSL2 的使用更加灵活。
+因此在需要配置 Isaac Gym 环境时我优先考虑了是否可以使用 WSL 进行仿真运行。
+幸运的是在谷歌了一番后成功找到这样一篇[成功案例](https://ljoson.github.io/views/AI/RL/env.html)，于是便开始了我的折腾之路
 
-## 准备工作
-
-- (可选) 安装 [PowerShell 7](https://github.com/PowerShell/PowerShell)
-- 安装 [WindTerm](https://github.com/kingToolbox/WindTerm) / [MobaXterm](https://mobaxterm.mobatek.net/download.html)，我个人更喜欢 WindTerm
-
-这里安装 WindTerm / MobaXterm 一是因为 Windows 的终端真的太难用了，二是为了后续支持 X11 forward 来打开图形化 Isaac Gym 界面
+> [!IMPORTANT]
+> 可以的话还是用 Issac Lab 吧，别折腾自己
 
 ## WSL2 安装
 
@@ -42,6 +40,7 @@ wsl
 4. Troubleshooting
 
 此时大概率会报错：
+
 ```shell
 wsl: 检测到 localhost 代理配置，但未镜像到 WSL。NAT 模式下的 WSL 不支持 localhost 代理。
 ```
@@ -51,7 +50,7 @@ wsl: 检测到 localhost 代理配置，但未镜像到 WSL。NAT 模式下的 W
 - 前往 `%USERPROFILE%` 文件夹，创建 `.wslconfig`
 - 添加如下内容
 
-```
+```ini
 [experimental]
 autoMemoryReclaim=gradual
 networkingMode=mirrored
@@ -77,11 +76,13 @@ cd ~
 mkdir -p dev/toolchains
 ```
 
-> 我是 macOS 用户，所以我更熟悉 zsh。其实完全没必要安装 zsh
+::: tip
+我是 macOS 用户，所以我更熟悉 zsh。其实完全没必要安装 zsh
+:::
 
 ## SSH
 
-1. 安装 ssh，然后就可以摆脱难用的 Windows 终端了。
+1. 安装 ssh，这样就可以在其他终端软件或者其他设备上访问 wsl 了。
 
 ```shell
 sudo apt install openssh-server
@@ -120,44 +121,27 @@ X11UseLocalhost no
 
 打开 `高级安全 Windows Defender 防火墙`，`入站规则` -> `新建规则...`
 
-![](https://img2024.cnblogs.com/blog/3281656/202505/3281656-20250520195822889-684431114.png)
+![](assets/isaac-gym-wsl2/new.png)
 
 选择 `端口` -> `下一页` -> `特定本地端口`，填写上面设置的端口 `222`
 
-![](https://img2024.cnblogs.com/blog/3281656/202505/3281656-20250520200137658-473722881.png)
+![](assets/isaac-gym-wsl2/port.png)
 
 `下一页` -> `下一页` -> `下一页`，输入名称，点击 `完成`
 
-![](https://img2024.cnblogs.com/blog/3281656/202505/3281656-20250520200444534-1810923649.png)
-
-## WindTerm
-
-1. 新建会话，配置主机 `127.0.0.1` 和端口 `222`，填写标签
-
-![](https://img2024.cnblogs.com/blog/3281656/202505/3281656-20250520194141159-7959963.png)
-
-2. 开启 X11 forwarding
-
-选择 `X11` 选项卡，将 `X11显示` 修改为 `内部 X 显示`
-
-![](https://img2024.cnblogs.com/blog/3281656/202505/3281656-20250520193749546-1457863145.png)
-
-> MobaXterm 可以自行寻找开启办法，网上教程很多
-
-3. 双击刚才创建的会话，选择 `账户` 输入用户名和密码进行登录
+![](assets/isaac-gym-wsl2/name.png)
 
 ## CUDA
 
 Windows NVIDIA 驱动现在内置 WSL2 支持，只需要下载 CUDA Toolkit 即可。在[官网](https://developer.nvidia.com/cuda-downloads)一步步选择正确的架构和平台，通过给出的命令行命令进行下载
 
-注意事项：
-
-- Distribution 一定要选择 `WSL-Ubuntu`
-- Installer Type 都可以选，我选择的 `deb(network)`，因为整体耗时更短。
+> [!IMPORTANT]
+> - Distribution 一定要选择 `WSL-Ubuntu`
+> - Installer Type 都可以选，我选择的 `deb(network)`，因为整体耗时更短。
 
 以最新版本 12.9 为例(20250519)
 
-![](https://img2024.cnblogs.com/blog/3281656/202505/3281656-20250520183749404-514121525.png)
+![](assets/isaac-gym-wsl2/cuda.png)
 
 1. 执行安装命令
 
@@ -170,6 +154,7 @@ sudo apt-get -y install cuda-toolkit-12-9
 
 2. 添加环境变量至环境变量文件
 
+> [!TIP]
 > 如果安装了 zsh，环境变量文件在 `~/.zshrc`，否则在 `~/.bashrc`
 >
 > 如果不确定，运行 `echo $SHELL` 进行查看
@@ -255,7 +240,7 @@ python 1080_balls_of_solitude.py
 
 大概率第一次无法运行，会出现这样的报错：
 
-![](https://img2024.cnblogs.com/blog/3281656/202505/3281656-20250520225536726-1373668527.png)
+![](assets/isaac-gym-wsl2/demo.png)
 
 解决方案[^3]：
 
@@ -268,7 +253,7 @@ sudo cp /home/erbws/dev/toolchains/miniconda3/envs/unitree-rl/lib/libpython3.8.s
 
 再次运行再次报错：
 
-![](https://img2024.cnblogs.com/blog/3281656/202505/3281656-20250520230025733-1857230960.png)
+![](assets/isaac-gym-wsl2/demo2.png)
 
 意思是没有安装 Vulkan，下面安装 Vulkan
 
@@ -278,8 +263,6 @@ sudo cp /home/erbws/dev/toolchains/miniconda3/envs/unitree-rl/lib/libpython3.8.s
 
 从[官网](https://vulkan.lunarg.com/sdk/home)选择 `Linux` - `Ubuntu Packages`，找到对应 Ubuntu 版本的命令进行下载
 
-![](https://img2024.cnblogs.com/blog/3281656/202505/3281656-20250520231042951-1405422627.png)
-
 ```shell
 wget -qO - https://packages.lunarg.com/lunarg-signing-key-pub.asc | sudo apt-key add -
 sudo wget -qO /etc/apt/sources.list.d/lunarg-vulkan-1.4.313-noble.list https://packages.lunarg.com/vulkan/1.4.313/lunarg-vulkan-1.4.313-noble.list
@@ -287,7 +270,8 @@ sudo apt update
 sudo apt install vulkan-sdk
 ```
 
-> 该方法后续会 deprecate，Tarball 安装方法参考[官方文档](https://vulkan.lunarg.com/doc/sdk/1.4.313.0/linux/getting_started.html)
+> [!CAUTION]
+> 命令行方法已经 deprecate，Tarball 安装方法参考[官方文档](https://vulkan.lunarg.com/doc/sdk/1.4.313.0/linux/getting_started.html)
 
 这时运行 `vulkaninfo --summary` 会发现在使用 CPU (llvmpipe) 而不是 NVIDIA GPU，这是因为 WSL2 内置的 mesa 是 CPU 实现[^4]，我们需要使用第三方 mesa 源来启用 GPU
 
@@ -307,17 +291,19 @@ export VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/dzn_icd.x86_64.json
 
 这时再运行 `vulkaninfo --summary` 不出意外可以看到 GPU 被成功识别
 
-> 出意外也没关系，继续往下看
+![](assets/isaac-gym-wsl2/vulkaninfo.png)
 
-![](https://img2024.cnblogs.com/blog/3281656/202505/3281656-20250520233000686-377228661.png)
+> [!INFO]
+> 出意外也没关系，继续往下看
 
 4. 再次运行 demo
 
 不出意外已经可以成功运行
 
-> 出意外也没关系，继续往下看
+![](assets/isaac-gym-wsl2/demo3.png)
 
-![](https://img2024.cnblogs.com/blog/3281656/202505/3281656-20250520234037671-1172254960.png)
+> [!INFO]
+> 出意外也没关系，继续往下看
 
 ## Unitree RL GYM
 
@@ -355,7 +341,7 @@ python train.py --task=go2 --num_envs=1
 
 大概率这时候会报这样的错误：
 
-![](https://img2024.cnblogs.com/blog/3281656/202505/3281656-20250522013836690-319728203.png)
+![](assets/isaac-gym-wsl2/unitree.png)
 
 解决方案[^5]：
 
@@ -369,9 +355,10 @@ ln -s /usr/lib/x86_64-linux-gnu/libstdc++.so.6 libstdc++.so.6
 
 再次运行可以看到成功运行，这时候再去运行 demo 大概率也正常了
 
-> 如果还是运行不了就只有自己谷歌找找有没有解决办法了
+![](assets/isaac-gym-wsl2/unitree2.png)
 
-![](https://img2024.cnblogs.com/blog/3281656/202505/3281656-20250520235424281-1515234301.png)
+> [!INFO]
+> 如果还是运行不了就只有自己谷歌找找有没有解决办法了
 
 ## 后记
 

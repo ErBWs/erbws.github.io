@@ -2,7 +2,7 @@
 
 ## 前言
 
-想在`NanoPi-NEO`上开发屏幕驱动，但是看了下文件目录发现没有内核树，导致最基础的`file_operations`结构体都无法使用，于是寻找内核树安装方法。
+想在 `NanoPi-NEO` 上开发屏幕驱动，但是看了下文件目录发现没有内核树，导致最基础的 `file_operations` 结构体都无法使用，于是寻找内核树安装方法。
 但官方提供的内核为 4.14 太旧了 `apt` 找不到对应的 `linux-source` 版本 (其实后面发现不需要用 `apt` ，可以在 [kernel.org](https://www.kernel.org/) 上下载，
 但反正都装了那就当学习一下怎么移植了)，于是选择自己重新构建了整个系统。
 
@@ -152,7 +152,7 @@ make menuconfig
 
 ![](assets/nanopi-neo-ubuntu/esc.png)
 
-4. 编译`zImage`和`sun8i-h3-nanopi-neo.dtb`
+4. 编译 `zImage` 和 `sun8i-h3-nanopi-neo.dtb`
 
 ```shell
 # 编译时间大概1-2小时
@@ -310,7 +310,7 @@ nmcli dev
 sudo nmcli dev set eth0 managed yes
 ```
 
-连接wifi
+连接 wifi
 
 ```shell
 # 打开Wi-Fi
@@ -321,7 +321,7 @@ nmcli dev wifi
 nmcli dev wifi connect "SSID" password "PASSWORD" ifname wlx70f11c658d80
 ```
 
-配置静态ip
+配置静态 ip
 
 ```shell
 # 获取当前ip(假设获取到ip为192.168.31.102)
