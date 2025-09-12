@@ -1,11 +1,24 @@
 ---
-layout: doc
+layout: home
+
+hero:
+  name: Blogs
+
+features:
+  - title: 在 WSL2 上配置 Isaac Gym 宇树机器人强化学习环境
+    details: 2025-05-21 00:08
+    link: ./isaac-gym-wsl2
+    linkText: Read more
+  - title: macOS 环境配置 cheat sheet
+    details: 2025-05-08 21:32
+    link: ./macos-env
+    linkText: Read more
+  - title: NanoPi-NEO 移植 Ubuntu 22.04
+    details: 2024-04-22 00:52
+    link: ./nanopi-neo-ubuntu
+    linkText: Read more
+  - title: 在 Clion 中配置 CH32 RISC-V 工具链
+    details: 2023-04-21 19:15
+    link: ./ch32-with-clion
+    linkText: Read more
 ---
-
-# 我的博客
-
-## 开发
-- [在 Clion 中配置 CH32 RISC-V 工具链](./ch32-with-clion)
-- [NanoPi-NEO 移植 Ubuntu 22.04](./nanopi-neo-ubuntu)
-- [在 WSL2 上配置 Isaac Gym 宇树机器人强化学习环境](./isaac-gym-wsl2)
-- [macOS 环境配置 cheat sheet](./macos-env)

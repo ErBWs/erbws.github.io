@@ -6,7 +6,7 @@ import mediumZoom from 'medium-zoom';
 
 import "./style.css";
 import "./kbd.css";
-import "./divider.css";
+import "./overall.css";
 import "./custom-block.css";
 import "./font.css";
 import "./medium-zoom.css";

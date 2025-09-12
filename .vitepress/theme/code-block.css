@@ -23,6 +23,13 @@
     }
 }
 
+/* 移动端关闭屏幕宽度代码块 */
+.vp-doc div[class*='language-'] {
+    margin-left: 0;
+    margin-right: 0;
+    border-radius: 8px;
+}
+
 .vp-code-group {
     /* 代码组阴影 */
     border-radius: 8px;
@@ -31,6 +38,11 @@
     /* 代码组 macOS 圆点 */
     .tabs {
         padding-top: 20px;
+
+        /* 移动端关闭屏幕宽度代码块 */
+        margin-left: 0;
+        margin-right: 0;
+        border-radius: 8px;
 
         &::before {
             content: '';

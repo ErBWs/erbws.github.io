@@ -5,11 +5,13 @@
         background-color: rgba(255, 255, 255, 0);
     }
 
-    /* Feature透明 */
-    .VPFeature {
-        border: none;
-        box-shadow: 0 10px 30px 0 rgb(0 0 0 / 15%);
-        background-color: transparent;
+    /* 卡片悬浮效果 */
+    .VPFeatures .items .item {
+        transition: transform 0.3s;
+    }
+
+    .VPFeatures .items .item:hover {
+        transform: translateY(-5px);
     }
 
     /* 手机端菜单栏顶部横条隐藏 */
