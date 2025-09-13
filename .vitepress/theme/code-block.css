@@ -21,6 +21,11 @@
     .line-numbers-wrapper {
         padding-top: 32px;
     }
+
+    /* 减小代码块下方 margin */
+    code {
+        margin-bottom: -10px;
+    }
 }
 
 /* 移动端关闭屏幕宽度代码块 */
@@ -42,7 +47,8 @@
         /* 移动端关闭屏幕宽度代码块 */
         margin-left: 0;
         margin-right: 0;
-        border-radius: 8px;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
 
         &::before {
             content: '';
