@@ -1,8 +1,8 @@
-# macOS 环境配置 cheat sheet
+# macOS 配置 cheat sheet
 
 ## 前言
 
-这是一个单纯的记录性文档，用来记录我如何从头开始配置 macOS 上我需要的开发环境
+这是一个单纯的记录性文档，用来记录我如何从头开始配置 macOS 上我需要的内容和开发环境
 
 > [!TIP] 为什么不用 nix-darwin?
 >

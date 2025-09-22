@@ -28,7 +28,7 @@ wsl --install
 wsl -l -o
 
 # 选择 20.04 及以上的 Ubuntu 发行版进行安装
-wsl --install -d Ubuntu-24.04
+wsl --install --name rl -d Ubuntu-24.04
 ```
 
 3. 启动 Ubuntu

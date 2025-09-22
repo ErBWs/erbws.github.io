@@ -9,9 +9,13 @@ features:
     details: 2025-05-21 00:08
     link: ./isaac-gym-wsl2
     linkText: Read more
-  - title: macOS 环境配置 cheat sheet
+  - title: macOS 配置 cheat sheet
     details: 2025-05-08 21:32
     link: ./macos-env
+    linkText: Read more
+  - title: 解决 macOS STM32 开发找不到头文件等问题
+    details: 2025-04-23 22:08
+    link: ./macos-stm32-missing-stdint
     linkText: Read more
   - title: NanoPi-NEO 移植 Ubuntu 22.04
     details: 2024-04-22 00:52
