@@ -101,6 +101,13 @@ brew install --cask git-credential-manager
 
 - 懒人做法：从[官网](https://github.com/apps/desktop)下载 Github Desktop 并用网页登录，会自动 git config
 
+## 嵌入式
+
+```shell
+brew install --cask gcc-arm-embedded
+brew install open-ocd
+```
+
 ## Flutter
 
 Flutter 分为原始仓库 [flutter / flutter](https://github.com/flutter/flutter) 和 [OpenHarmony-TPC / flutter_flutter](https://gitcode.com/openharmony-tpc/flutter_flutter)，其中后者提供了 ohos 支持
@@ -120,7 +127,7 @@ export PATH=~/dev/toolchains/flutter/bin:$PATH
 ### flutter_ohos 安装
 
 ```shell
-git clone -b 3.22.0-ohos https://gitcode.com/openharmony-tpc/flutter_flutter.git flutter_ohos
+git clone -b oh-3.32.4-dev https://gitcode.com/openharmony-tpc/flutter_flutter.git flutter_ohos
 
 # ~/.zshrc
 alias flutter_ohos="~/dev/toolchains/flutter_ohos/bin/flutter"
@@ -161,24 +168,9 @@ export JAVA_HOME=$TEMURIN_17
 
 ## Node.js
 
-根据[官网](https://nodejs.org/en/download/)的命令进行安装，以 Node.js v22.19.0 (LTS) 和 nvm v0.40.3 为例
-
 ```shell
-# Download and install nvm:
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
-
-# Download and install Node.js:
-nvm install 22
-
-# Verify the Node.js version:
-node -v # Should print "v22.19.0".
-nvm current # Should print "v22.19.0".
-
-# Download and install pnpm:
-corepack enable pnpm
-
-# Verify pnpm version:
-pnpm -v
+brew install node
+brew install pnpm
 ```
 
 ## macOS/iOS
