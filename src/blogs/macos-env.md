@@ -22,20 +22,16 @@ cd ~/dev/toolchains
 ## oh-my-zsh
 
 ```shell
-#添加一个临时 proxy 用来访问 raw.githubusercontent.com
-export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890
-
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+sh -c "$(curl -fsSL https://gitee.com/mirrors/oh-my-zsh/raw/master/tools/install.sh)"
 ```
 
-修改生成的 `～/.zshrc`
-
-1. 终端主题 `ZSH_THEME="af-magic"`
-2. 添加 proxy
+在 `~/.zshrc` 中修改终端主题为 `ZSH_THEME="af-magic"`
 
 ## Homebrew
 
 ```shell
+export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git"
+export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git"
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # ~/.zshrc
@@ -69,7 +65,7 @@ font-thicken = true
 
 ### 配置右键菜单 `在终端中打开` 使用 Ghostty
 
-1. 找到一个默认打开方式为 `终端` 的文件
+1. 找到 `/opt/homebrew/bin` 下的 `brew` Unix 可执行文件
 2. 右键显示简介，将打开方式修改为 Ghostty，并全局应用
 
 ## 字体
