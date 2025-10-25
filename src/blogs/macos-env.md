@@ -162,36 +162,6 @@ export JAVA_HOME=$TEMURIN_17
 - HarmonyOS SDK - JDK17
 - Android - JDK17
 
-## Rust
-
-由于网络问题即使使用 VPN 也不一定能正常安装，所以使用[阿里云镜像源](https://developer.aliyun.com/mirror/rustup?spm=a2c6h.13651102.0.0.31c51b11jaQbTA)进行下载安装
-
-### 配置 rustup 镜像
-
-```shell
-# ~/.zshrc
-export RUSTUP_UPDATE_ROOT=https://mirrors.aliyun.com/rustup/rustup
-export RUSTUP_DIST_SERVER=https://mirrors.aliyun.com/rustup
-```
-
-### 安装 rust
-
-```shell
-curl --proto '=https' --tlsv1.2 https://mirrors.aliyun.com/repo/rust/rustup-init.sh -sSf | sh
-```
-
-### 配置 crates.io 镜像
-
-在 `~/.cargo/config.toml` 中添加以下内容
-
-```toml
-[source.crates-io]
-replace-with = 'aliyun'
-
-[source.aliyun]
-registry = "sparse+https://mirrors.aliyun.com/crates.io-index/"
-```
-
 ## Node.js
 
 ```shell
@@ -229,9 +199,47 @@ brew install cocoapods
 # ~/.zshrc
 export TOOL_HOME=/Applications/DevEco-Studio.app/Contents
 export DEVECO_SDK_HOME=$TOOL_HOME/sdk
+export OHOS_NDK_HOME=$TOOL_HOME/sdk/default/openharmony
 export PATH=$TOOL_HOME/tools/ohpm/bin:$PATH
 export PATH=$TOOL_HOME/tools/hvigor/bin:$PATH
 export PATH=$TOOL_HOME/sdk/default/openharmony/toolchains:$PATH
+```
+
+## Rust
+
+由于网络问题即使使用 VPN 也不一定能正常安装，所以使用[阿里云镜像源](https://developer.aliyun.com/mirror/rustup?spm=a2c6h.13651102.0.0.31c51b11jaQbTA)进行下载安装
+
+### 配置 rustup 镜像
+
+```shell
+# ~/.zshrc
+export RUSTUP_UPDATE_ROOT=https://mirrors.aliyun.com/rustup/rustup
+export RUSTUP_DIST_SERVER=https://mirrors.aliyun.com/rustup
+```
+
+### 安装 rust
+
+```shell
+curl --proto '=https' --tlsv1.2 https://mirrors.aliyun.com/repo/rust/rustup-init.sh -sSf | sh
+```
+
+### 配置 crates.io 镜像
+
+在 `~/.cargo/config.toml` 中添加以下内容
+
+```toml
+[source.crates-io]
+replace-with = 'aliyun'
+
+[source.aliyun]
+registry = "sparse+https://mirrors.aliyun.com/crates.io-index/"
+```
+
+### 添加 [ohrs](https://ohos.rs)
+
+```shell
+rustup target add aarch64-unknown-linux-ohos
+cargo install ohrs
 ```
 
 ## Android SDK
