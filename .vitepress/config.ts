@@ -41,9 +41,9 @@ export default defineConfig({
       { text: '主页', link: '/' },
       { text: '博客', link: '/blogs' },
       {
-        text: '󰃋',
+        text: '关于',
         items: [
-          { text: '󰀘 HM Symbol', link: 'https://erbws.github.io/hm-symbol' },
+          { text: 'HM Symbol', link: 'https://erbws.github.io/hm-symbol' },
         ]
       }
     ],

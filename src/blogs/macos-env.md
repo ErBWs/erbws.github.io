@@ -73,10 +73,8 @@ font-thicken = true
 通过 Homebrew 安装常用字体
 
 ```shell
-# 思源黑体
-brew install --cask font-source-han-sans-vf
-# 思源宋体
-brew install --cask font-source-han-serif-vf
+# Noto Sans
+brew install --cask font-noto-sans-sc
 # 霞鹜文楷 GB
 brew install --cask font-lxgw-wenkai-gb
 # JetBrains Mono
