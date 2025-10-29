@@ -39,7 +39,13 @@ export default defineConfig({
 
     nav: [
       { text: '主页', link: '/' },
-      { text: '博客', link: '/blogs' }
+      { text: '博客', link: '/blogs' },
+      {
+        text: '󰃋',
+        items: [
+          { text: '󰀘 HM Symbol', link: 'https://erbws.github.io/hm-symbol' },
+        ]
+      }
     ],
 
     sidebar: {

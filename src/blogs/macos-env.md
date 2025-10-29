@@ -239,6 +239,8 @@ registry = "sparse+https://mirrors.aliyun.com/crates.io-index/"
 
 ```shell
 rustup target add aarch64-unknown-linux-ohos
+rustup target add armv7-unknown-linux-ohos
+rustup target add x86_64-unknown-linux-ohos
 cargo install ohrs
 ```
 
